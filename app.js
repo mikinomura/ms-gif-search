@@ -2,12 +2,12 @@
 var express = require('express');
 var app = express();
 
-app.get('/hello-world', function (req, res) {
-  res.send('Hello World');
-});
-
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
+});
+
+app.get('/hello-world', function (req, res) {
+  res.send('Hello World');
 });
 
 var exphbs  = require('express-handlebars');
@@ -25,9 +25,7 @@ app.get('/greetings/:name', function (req, res) {
   res.render('greetings', {name: name});
 })
 
-// REQUIRE HTTP MODULE
 var http = require('http');
-// INITIALIZE THE GIPHY-API LIBRARY
 var giphy = require('giphy-api')();
 
 app.get('/', function (req, res) {
