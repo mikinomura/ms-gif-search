@@ -42,3 +42,7 @@ button {
   border: 1px solid #FE7880;
   color: #FE7880;
 }
+
+p {
+  text-align: center;
+}

@@ -30,7 +30,8 @@ var giphy = require('giphy-api')();
 
 app.get('/', function (req, res) {
   giphy.search(req.query.term, function (err, response) {
-    res.render('home', {gifs: response.data})
+    var title = "You are searching... " + req.query.term;
+    res.render('home', {gifs: response.data, title: title})
   });
 });
 
