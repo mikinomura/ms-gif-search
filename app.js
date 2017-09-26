@@ -29,10 +29,17 @@ var http = require('http');
 var giphy = require('giphy-api')();
 
 app.get('/', function (req, res) {
-  giphy.search(req.query.term, function (err, response) {
-    var title = "You are searching... " + req.query.term;
-    res.render('home', {gifs: response.data, title: title})
-  });
+  if (req.query.term == null) {
+    var title = "Find what you make smile!"
+    giphy.trending(function (err, response) {
+      res.render('home', {gifs: response.data, title: title})
+    });
+  } else {
+    giphy.search(req.query.term, function (err, response) {
+      var title = "You are searching... " + req.query.term;
+      res.render('home', {gifs: response.data, title: title})
+    });
+  }
 });
 
 app.use(express.static('public'));
